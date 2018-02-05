@@ -19,7 +19,7 @@ npm install react-leaflet-deflate --save
 #### Usage example
 
 ```javascript
-import { Map } from 'react-leaflet';
+import { Map, TileLayer } from 'react-leaflet';
 import Deflate from 'react-leaflet-deflate';
 
 const geojson = {
@@ -34,15 +34,15 @@ const geojson = {
   }
 };
 
-<Map className="leaflet-deflate-map" center={[51.505, -0.09]} zoom={12} maxZoom={18}>
+<Map center={[51.505, -0.09]} zoom={12}>
   <TileLayer
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   />
 
   <Deflate
-    minSize={10}
     data={geojson}
+    minSize={10}
     markerCluster={true}
   />
 </Map>
@@ -52,6 +52,7 @@ const geojson = {
 
 Option          | Type      | Default | Description
 --------------- | --------- | ------- | -------------
+`data`          | `object`     | `{}`    | Required. A valid [GeoJSON object](http://geojson.org/geojson-spec.html).
 `minSize`       | `int`     | `20`    | Defines the minimum width and height in pixels for a path to be displayed in its actual shape.
 `markerOptions` | `object` or `function`  | `{}`    | Optional. Customize the markers of deflated features using [Leaflet marker options](http://leafletjs.com/reference-1.3.0.html#marker).
 `markerCluster` | `boolean` | `false` | Indicates whether markers should be clustered. Requires `Leaflet.MarkerCluser`.
