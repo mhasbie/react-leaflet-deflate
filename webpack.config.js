@@ -1,7 +1,7 @@
 /* eslint-disable */
 module.exports = {
   output: {
-    library: 'ReactLeafletDeflate',
+    library: 'ReactLeaflet',
     libraryTarget: 'umd'
   },
   externals: [

@@ -4,9 +4,9 @@
 	else if(typeof define === 'function' && define.amd)
 		define(["react-leaflet", "leaflet"], factory);
 	else if(typeof exports === 'object')
-		exports["ReactLeafletDeflate"] = factory(require("react-leaflet"), require("leaflet"));
+		exports["ReactLeaflet"] = factory(require("react-leaflet"), require("leaflet"));
 	else
-		root["ReactLeafletDeflate"] = factory(root[undefined], root["L"]);
+		root["ReactLeaflet"] = factory(root[undefined], root["L"]);
 })(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache

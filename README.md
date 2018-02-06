@@ -25,16 +25,17 @@ import Deflate from 'react-leaflet-deflate';
 const geojson = {
   "type": "Feature",
   "geometry": {
-    "type": "Polygon",
-    "coordinates": [[
-      [51.509, -0.08],
-      [51.503, -0.06],
-      [51.51, -0.047]
-    ]]
+	"type": "Polygon",
+	"coordinates": [[
+	  [101.460114, 2.978699],
+	  [101.546631, 2.918354],
+	  [101.466980, 2.941669],
+	  [101.460114, 2.978699]
+	]]
   }
 };
 
-<Map center={[51.505, -0.09]} zoom={12}>
+<Map center={[101.483459, 2.938926]} zoom={12}>
   <TileLayer
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
