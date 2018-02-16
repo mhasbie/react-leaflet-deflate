@@ -1,5 +1,14 @@
-window["ReactLeafletDeflate"] =
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory(require("react-leaflet"), require("leaflet"));
+	else if(typeof define === 'function' && define.amd)
+		define(["react-leaflet", "leaflet"], factory);
+	else if(typeof exports === 'object')
+		exports["ReactLeafletDeflate"] = factory(require("react-leaflet"), require("leaflet"));
+	else
+		root["ReactLeafletDeflate"] = factory(root[undefined], root["L"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_2__, __WEBPACK_EXTERNAL_MODULE_3__) {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 
@@ -138,13 +147,13 @@ window["ReactLeafletDeflate"] =
 /* 2 */
 /***/ (function(module, exports) {
 
-	(function() { module.exports = window[undefined]; }());
+	module.exports = __WEBPACK_EXTERNAL_MODULE_2__;
 
 /***/ }),
 /* 3 */
 /***/ (function(module, exports) {
 
-	(function() { module.exports = window[undefined]; }());
+	module.exports = __WEBPACK_EXTERNAL_MODULE_3__;
 
 /***/ }),
 /* 4 */
@@ -341,4 +350,6 @@ window["ReactLeafletDeflate"] =
 	};
 
 /***/ })
-/******/ ]);
+/******/ ])
+});
+;
