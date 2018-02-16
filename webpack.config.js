@@ -2,7 +2,7 @@
 module.exports = {
   output: {
     library: 'ReactLeafletDeflate',
-    libraryTarget: 'umd'
+    libraryTarget: 'window'
   },
   externals: [
     {
