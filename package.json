@@ -1,6 +1,6 @@
 {
   "name": "react-leaflet-deflate",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "React wrapper of Leaflet.Deflate. Substitues polygons and lines with markers when screen size falls below a defined threshold.",
   "main": "dist/react-leaflet-deflate.js",
   "scripts": {
