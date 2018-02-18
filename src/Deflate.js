@@ -16,6 +16,6 @@ export default class Deflate extends MapLayer {
 		const geoJson = geoJSON(data, { style, onEachFeature, pointToLayer, filter, pane });
 		this.leafletElement.addTo(layerContainer);
 		this.leafletElement.addLayer(geoJson);
-		if (markerCluster) map._container.className += ' marker-cluster-styled marker-cluster-animated';
+		if (markerCluster) map._container.className += ' leaflet-cluster-anim marker-cluster-styled marker-cluster-animated';
 	}
 }
