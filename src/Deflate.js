@@ -1,5 +1,6 @@
 import { MapLayer } from 'react-leaflet';
 import L, { geoJSON } from 'leaflet';
+import 'leaflet.markercluster';
 import './L.Deflate';
 
 export default class Deflate extends MapLayer {
