@@ -18,7 +18,14 @@ Substitutes polygons and lines with markers when their screen size falls below a
 ### Install via NPM
 
 ```bash
-npm install react-leaflet-deflate --save
+npm install --save react-leaflet-deflate
+```
+
+`react-leaflet-deflate` requires `leaflet.markercluster` as [`peerDependency`](https://docs.npmjs.com/files/package.json#peerdependencies)
+
+(React, PropTypes, Leaflet, react-leaflet also should be installed)
+```bash
+npm install --save leaflet.markercluster
 ```
 
 ## Usage example
