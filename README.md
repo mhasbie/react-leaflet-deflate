@@ -14,7 +14,7 @@ for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
 
 Substitutes polygons and lines with markers when their screen size falls below a defined threshold.
 
-*Tested with Leaflet 1.0.3 and React-Leaflet 1.3.1*
+*Tested with React 16.3, React-Leaflet 2.0, Leaflet 1.3.0, and Leaflet.Deflate 1.0.0-alpha.3*
 
 ![Example](https://cloud.githubusercontent.com/assets/159510/7164588/090c06fe-e399-11e4-956d-0283ef7e69cf.gif)
 
@@ -31,7 +31,7 @@ npm install --save react-leaflet-deflate
 
 `react-leaflet-deflate` requires `leaflet.markercluster` as [`peerDependency`](https://docs.npmjs.com/files/package.json#peerdependencies)
 
-(React, PropTypes, Leaflet, react-leaflet also should be installed)
+(React, Leaflet, react-leaflet also should be installed)
 ```bash
 npm install --save leaflet.markercluster
 ```
@@ -116,7 +116,8 @@ Option          | Type      | Default | Description
 
 
 # Credits
-Credits goes to [oliverroick](https://github.com/oliverroick) and all the [contributors](https://github.com/oliverroick/Leaflet.Deflate/graphs/contributors) for the original work.
+  - [oliverroick](https://github.com/oliverroick) and the other [contributors](https://github.com/oliverroick/Leaflet.Deflate/graphs/contributors) to for the original work on `Leaflet.Deflate`.
+  - [clintharris](https://github.com/clintharris) for updating `react-leaflet-deflate` to reference `Leaflet.Deflate` as an external dependency, support property changes, and work with `react-leaflet` v2.
 
 # License
 

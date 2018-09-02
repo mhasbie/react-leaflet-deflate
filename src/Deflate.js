@@ -1,21 +1,27 @@
-import { MapLayer } from 'react-leaflet';
-import L, { geoJSON } from 'leaflet';
-import 'leaflet.markercluster';
-import './L.Deflate';
+import Leaflet from 'leaflet';
+import { DeflatedFeatureGroup } from 'Leaflet.Deflate';
+import { MapLayer, withLeaflet } from 'react-leaflet';
 
-export default class Deflate extends MapLayer {
+
+class Deflate extends MapLayer {
+
 	createLeafletElement(props) {
-		const { minSize = 10, markerCluster, markerOptions } = props
-		return L.deflate({ minSize, markerCluster, markerOptions });
+		return new DeflatedFeatureGroup(props);
 	}
 
-	componentDidMount() {
-		const { data, style, onEachFeature, pointToLayer, filter, markerCluster } = this.props
-		const { map, pane, layerContainer } = this.context;
+  componentDidMount() {
+		// This will add our DeflatedFeatureGroup (this.leafletElement) to the map--something that must happen BEFORE
+		// we can add anything to DeflatedFeatureGroup itself.
+    super.componentDidMount();
+		Leaflet.geoJSON(this.props.data, this.props).addTo(this.leafletElement);
+  }
 
-		const geoJson = geoJSON(data, { style, onEachFeature, pointToLayer, filter, pane });
-		this.leafletElement.addTo(layerContainer);
-		this.leafletElement.addLayer(geoJson);
-		if (markerCluster) map._container.className += ' leaflet-cluster-anim marker-cluster-styled marker-cluster-animated';
+  updateLeafletElement(fromProps, toProps) {
+		this.props.leaflet.layerContainer.removeLayer(this.leafletElement);
+		this.leafletElement = new DeflatedFeatureGroup(toProps);
+		this.props.leaflet.layerContainer.addLayer(this.leafletElement);
+		Leaflet.geoJSON(toProps.data, toProps).addTo(this.leafletElement);
 	}
 }
+
+export default withLeaflet(Deflate);

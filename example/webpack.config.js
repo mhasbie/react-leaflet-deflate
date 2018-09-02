@@ -17,6 +17,10 @@ module.exports = {
       {
         test: /\.json$/,
         loader: 'json-loader'
+      },
+      {
+        test: /L\.Deflate\.js$/,
+        loaders: [ 'exports-loader?DeflatedFeatureGroup=L.Deflate' ]
       }
     ]
   },
