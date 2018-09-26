@@ -18,8 +18,6 @@ Substitutes polygons and lines with markers when their screen size falls below a
 
 ![Example](https://cloud.githubusercontent.com/assets/159510/7164588/090c06fe-e399-11e4-956d-0283ef7e69cf.gif)
 
-[Demo JSFiddle](https://jsfiddle.net/m_hasbie/pa290L0k/)
-
 ## Demos
 
 ### react-leaflet v1
