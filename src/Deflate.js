@@ -5,13 +5,13 @@ import './L.Deflate';
 
 export default class Deflate extends MapLayer {
 	createLeafletElement(props) {
-		const { minSize = 10, markerCluster, markerOptions } = props
-		return L.deflate({ minSize, markerCluster, markerOptions });
+		const { minSize = 10, markerCluster, markerOptions, markerClusterOptions } = props
+		return L.deflate({ minSize, markerCluster, markerOptions, markerClusterOptions });
 	}
 
 	componentDidMount() {
 		const { data, style, onEachFeature, pointToLayer, filter, markerCluster } = this.props
-		const { map, pane, layerContainer } = this.context;
+		const { map, pane, layerContainer } = this.props.leaflet || this.context
 
 		const geoJson = geoJSON(data, { style, onEachFeature, pointToLayer, filter, pane });
 		this.leafletElement.addTo(layerContainer);

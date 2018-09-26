@@ -18,7 +18,7 @@ module.exports = {
         amd: 'jquery',
         commonjs: 'jquery',
         commonjs2: 'jquery',
-         root: 'JQuery'
+        root: 'JQuery'
       }
     },
     {
@@ -40,7 +40,7 @@ module.exports = {
   ],
   module: {
     loaders: [
-      {test: /\.js$/, exclude: /node_modules/, loader: 'babel'}
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel' }
     ]
   }
 };
