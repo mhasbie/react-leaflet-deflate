@@ -27,7 +27,7 @@
   "license": "MIT",
   "peerDependencies": {
     "leaflet": "~1.3.4",
-    "react-leaflet": "~1.9.1",
+    "react-leaflet": "~2.0.1",
     "prop-types": "^15.5.0",
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0",
