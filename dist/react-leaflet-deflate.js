@@ -86,7 +86,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _leaflet2 = _interopRequireDefault(_leaflet);
 
-	var _Leaflet = __webpack_require__(3);
+	__webpack_require__(3);
 
 	var _reactLeaflet = __webpack_require__(4);
 
@@ -110,13 +110,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		_createClass(Deflate, [{
 			key: 'createLeafletElement',
 			value: function createLeafletElement(props) {
-				return new _Leaflet.DeflatedFeatureGroup(props);
+				return new _leaflet2.default.Deflate(props);
 			}
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				// This will add our DeflatedFeatureGroup (this.leafletElement) to the map--something that must happen BEFORE
-				// we can add anything to DeflatedFeatureGroup itself.
+				// This will add our Leaflet.Deflate (this.leafletElement) to the map--something that must happen BEFORE
+				// we can add anything to Leaflet.Deflate itself.
 				_get(Deflate.prototype.__proto__ || Object.getPrototypeOf(Deflate.prototype), 'componentDidMount', this).call(this);
 				_leaflet2.default.geoJSON(this.props.data, this.props).addTo(this.leafletElement);
 			}
@@ -124,7 +124,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			key: 'updateLeafletElement',
 			value: function updateLeafletElement(fromProps, toProps) {
 				this.props.leaflet.layerContainer.removeLayer(this.leafletElement);
-				this.leafletElement = new _Leaflet.DeflatedFeatureGroup(toProps);
+				this.leafletElement = new _leaflet2.default.Deflate(toProps);
 				this.props.leaflet.layerContainer.addLayer(this.leafletElement);
 				_leaflet2.default.geoJSON(toProps.data, toProps).addTo(this.leafletElement);
 			}
