@@ -26,7 +26,7 @@ module.exports = {
         amd: 'react-leaflet',
         commonjs: 'react-leaflet',
         commonjs2: 'react-leaflet',
-		    root: 'ReactLeaflet'
+				root: 'ReactLeaflet'
       }
     },
     {
