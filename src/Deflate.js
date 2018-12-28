@@ -9,14 +9,14 @@ class Deflate extends MapLayer {
 		return new Leaflet.Deflate(props);
 	}
 
-  componentDidMount() {
+	componentDidMount() {
 		// This will add our Leaflet.Deflate (this.leafletElement) to the map--something that must happen BEFORE
 		// we can add anything to Leaflet.Deflate itself.
-    super.componentDidMount();
+		super.componentDidMount();
 		Leaflet.geoJSON(this.props.data, this.props).addTo(this.leafletElement);
-  }
+	}
 
-  updateLeafletElement(fromProps, toProps) {
+	updateLeafletElement(fromProps, toProps) {
 		this.props.leaflet.layerContainer.removeLayer(this.leafletElement);
 		this.leafletElement = new Leaflet.Deflate(toProps);
 		this.props.leaflet.layerContainer.addLayer(this.leafletElement);
