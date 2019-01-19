@@ -5,6 +5,30 @@ import 'leaflet.markercluster';
 
 
 export default class Deflate extends MapLayer {
+	
+	initMapClasses() {
+
+		const { map } = this.context;
+
+		const mapClassName = map._container.className;
+
+		const isAnimClassApplied = mapClassName.indexOf('leaflet-cluster-anim') !== -1;
+		const isStyledClassApplied = mapClassName.indexOf('marker-cluster-styled') !== -1;
+		const isAnimatedClassApplied = mapClassName.indexOf('marker-cluster-animated') !== -1;
+
+		!isAnimClassApplied && (
+			map._container.className += ' leaflet-cluster-anim'
+		);
+
+		!isStyledClassApplied && (
+			map._container.className += ' marker-cluster-styled'
+		);
+
+		isAnimatedClassApplied && (
+			map._container.className += ' marker-cluster-animated'
+		);
+
+	}
 
 	createLeafletElement(props) {
 		return new DeflatedFeatureGroup(props);
@@ -17,7 +41,7 @@ export default class Deflate extends MapLayer {
 		// we can add anything to DeflatedFeatureGroup itself.
 		super.componentDidMount();
 		Leaflet.geoJSON(this.props.data, this.props).addTo(this.leafletElement);
-		if (markerCluster) map._container.className += ' leaflet-cluster-anim marker-cluster-styled marker-cluster-animated';
+		if (markerCluster) ths.initMapClasses();
 	}
 
 	updateLeafletElement(fromProps, toProps) {
