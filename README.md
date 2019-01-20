@@ -1,12 +1,14 @@
 # react-leaflet-deflate
 
-[![travis build](https://img.shields.io/travis/mhasbie/react-leaflet-deflate.svg?style=plastic)](https://travis-ci.org/mhasbie/react-leaflet-deflate)
+
 [![version](https://img.shields.io/npm/v/react-leaflet-deflate.svg?style=plastic)](http://npm.im/react-leaflet-deflate)
-[![MIT License](https://img.shields.io/npm/l/react-leaflet-deflate.svg?style=plastic)](http://opensource.org/licenses/MIT)
+[![react-leaflet compatibility](https://img.shields.io/npm/dependency-version/react-leaflet-deflate/peer/react-leaflet.svg?style=plastic)](https://github.com/mhasbie/react-leaflet-deflate)
+[![travis build](https://img.shields.io/travis/mhasbie/react-leaflet-deflate.svg?style=plastic)](https://travis-ci.org/mhasbie/react-leaflet-deflate)
 [![dependencies](https://img.shields.io/david/mhasbie/react-leaflet-deflate.svg?style=plastic)](https://david-dm.org/mhasbie/react-leaflet-deflate)
 [![peer dependencies](https://img.shields.io/david/peer/mhasbie/react-leaflet-deflate.svg?style=plastic)](https://david-dm.org/mhasbie/react-leaflet-deflate?type=peer)
-[![downloads](https://img.shields.io/npm/dt/react-leaflet-deflate.svg?style=plastic)](http://npm-stat.com/charts.html?package=react-leaflet-deflate&from=2018-01-01)
 [![issues](https://img.shields.io/github/issues/mhasbie/react-leaflet-deflate.svg?style=plastic)](https://github.com/mhasbie/react-leaflet-deflate/issues)
+[![downloads](https://img.shields.io/npm/dt/react-leaflet-deflate.svg?style=plastic)](http://npm-stat.com/charts.html?package=react-leaflet-deflate&from=2018-01-01)
+[![MIT License](https://img.shields.io/npm/l/react-leaflet-deflate.svg?style=plastic)](http://opensource.org/licenses/MIT)
 
 React wrapper of [Leaflet.Deflate](
 https://github.com/oliverroick/Leaflet.Deflate)
@@ -20,15 +22,10 @@ Substitutes polygons and lines with markers when their screen size falls below a
 
 ## Demos
 
-### react-leaflet v1
-
-[`JSFiddle`](https://jsfiddle.net/m_hasbie/pa290L0k/)
-[`CodePen`](https://codepen.io/m_hasbie/full/jvgeVR/)
-
-### react-leaflet v2
-
-[`JSFiddle`](https://jsfiddle.net/m_hasbie/t0821ph4/)
-[`CodePen`](https://codepen.io/m_hasbie/full/MqNPRy/)
+| Version				| Demo	|
+| ---					| ---	|
+| `react-leaflet@1.9.1`	| [`CodePen`](https://codepen.io/m_hasbie/full/jvgeVR/) |
+| `react-leaflet@2.x`	| [`CodePen`](https://codepen.io/m_hasbie/full/MqNPRy/) |
 
 
 ## Installation
@@ -74,8 +71,8 @@ const geojson = {...};
 
 ```javascript
 import { Map, TileLayer, withLeaflet } from 'react-leaflet';
-import Deflate from 'react-leaflet-deflate';
-const WrappedDeflate = withLeaflet(Deflate);
+import DeflateDefault from 'react-leaflet-deflate';	// Import as DeflateDefault var
+const Deflate = withLeaflet(DeflateDefault);		// wrap and pass to our Deflate variable. The rest of the code is the same as react-leaflet v1 example.
 
 const geojson = {...};
 
@@ -85,7 +82,7 @@ const geojson = {...};
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
   />
 
-  <WrappedDeflate
+  <Deflate
     data={geojson}
     minSize={10}
     markerCluster={true}

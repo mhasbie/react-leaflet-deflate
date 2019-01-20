@@ -1,5 +1,5 @@
 
-const sample1 = {
+var sample1 = {
   "type": "FeatureCollection",
   "features": [
 	{
@@ -44,7 +44,7 @@ const sample1 = {
   ]
 };
 
-const sample2 = {
+var sample2 = {
   "type": "FeatureCollection",
   "features": [
     {
@@ -147,5 +147,3 @@ const sample2 = {
     }
   ]
 }
-
-export { sample1, sample2 };

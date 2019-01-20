@@ -1,60 +1,74 @@
 {
-  "name": "react-leaflet-deflate",
-  "version": "2.1.0",
-  "description": "React wrapper of Leaflet.Deflate. Substitues polygons and lines with markers when screen size falls below a defined threshold.",
-  "main": "dist/react-leaflet-deflate.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run build:lib && npm run build:dist",
-    "build:dist": "webpack src/index.js dist/react-leaflet-deflate.js & webpack -p src/index.js dist/react-leaflet-deflate.min.js",
-    "build:lib": "npm run compile:lib",
-    "clean:lib": "rm -Rf ./lib",
-    "compile:lib": "babel src --out-dir lib",
-    "example": "webpack-dev-server --config ./example/webpack.config.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mhasbie/react-leaflet-deflate.git"
-  },
-  "keywords": [
-    "react",
-    "leaflet",
-    "react-leaflet",
-    "deflate",
-    "leaflet-deflate",
-    "react-leaflet-deflate"
-  ],
-  "author": "M. Hasbie",
-  "license": "MIT",
-  "peerDependencies": {
-    "leaflet": "~1.3.4",
-    "react-leaflet": "~2.0.1",
-    "leaflet.markercluster": "^1.4.1"
-  },
-  "dependencies": {
-    "Leaflet.Deflate": "^1.0.0-alpha.4"
-  },
-  "devDependencies": {
-    "babel-cli": "^6.8.0",
-    "babel-core": "^6.8.0",
-    "babel-eslint": "^7.0.0",
-    "babel-loader": "^6.2.4",
-    "babel-preset-env": "^1.6.1",
-    "babel-preset-react": "^6.0.15",
-    "babel-preset-stage-0": "^6.1.18",
-    "babel-register": "^6.26.0",
-    "eslint": "^3.8.1",
-    "eslint-plugin-react": "^6.4.1",
-    "exports-loader": "^0.6.4",
-    "imports-loader": "^0.8.0",
-    "leaflet": "~1.3.4",
-    "leaflet.markercluster": "^1.4.1",
-    "lodash.isequal": "^4.4.0",
-    "prop-types": "^15.5.10",
-    "react": "^16.5.2",
-    "react-dom": "^16.5.2",
-    "react-leaflet": "~2.0.1",
-    "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.16.5"
-  }
+	"name": "react-leaflet-deflate",
+	"version": "2.2.0",
+	"description": "React wrapper of Leaflet.Deflate. Substitues polygons and lines with markers when screen size falls below a defined threshold.",
+	"main": "dist/react-leaflet-deflate.min.js",
+	"scripts": {
+		"build": "npm run build:lib && npm run build:dist",
+		"build:dist": "webpack src/index.js --output dist/react-leaflet-deflate.min.js",
+		"build:lib": "npm run compile:lib",
+		"clean:lib": "rm -Rf ./lib",
+		"compile:lib": "babel src --out-dir lib",
+		"prepublishOnly": "npm run build",
+		"test": "jest --testPathIgnorePatterns enzyme.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mhasbie/react-leaflet-deflate.git"
+	},
+	"keywords": [
+		"react",
+		"leaflet",
+		"react-leaflet",
+		"deflate",
+		"leaflet-deflate",
+		"react-leaflet-deflate"
+	],
+	"author": "M. Hasbie",
+	"license": "MIT",
+	"peerDependencies": {
+		"leaflet": "^1.3.4",
+		"react-leaflet": "^1.9.1 || ^2.1.4",
+		"leaflet.markercluster": "^1.4.1"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-core": "^6.26.3",
+		"babel-eslint": "^10.0.1",
+		"babel-jest": "^23.6.0",
+		"babel-loader": "^7.1.5",
+		"babel-plugin-transform-class-properties": "^6.24.1",
+		"babel-plugin-transform-object-rest-spread": "^6.26.0",
+		"babel-preset-env": "^1.7.0",
+		"babel-preset-react": "^6.24.1",
+		"babel-preset-stage-0": "^6.24.1",
+		"babel-register": "^6.26.0",
+		"css-loader": "^2.0.2",
+		"enzyme": "^3.8.0",
+		"enzyme-adapter-react-16": "^1.7.1",
+		"eslint": "^5.11.0",
+		"eslint-plugin-react": "^7.11.1",
+		"jest": "^23.6.0",
+		"jest-enzyme": "^7.0.1",
+		"leaflet": "^1.3.4",
+		"leaflet.markercluster": "^1.4.1",
+		"lodash.isequal": "^4.4.0",
+		"prop-types": "^15.5.10",
+		"react": "^16.5.2",
+		"react-dom": "^16.5.2",
+		"react-leaflet": "^2.1.4",
+		"style-loader": "^0.23.1",
+		"webpack": "^4.28.2",
+		"webpack-cli": "^3.1.2",
+		"webpack-dev-server": "^3.1.14"
+	},
+	"dependencies": {
+		"Leaflet.Deflate": "^1.0.0-alpha.5"
+	},
+	"jest": {
+		"collectCoverage": true,
+		"transform": {
+			".*": "<rootDir>/node_modules/babel-jest"
+		}
+	}
 }
