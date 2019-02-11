@@ -63,7 +63,7 @@
 		"webpack-dev-server": "^3.1.14"
 	},
 	"dependencies": {
-		"Leaflet.Deflate": "^1.0.0-alpha.5"
+		"Leaflet.Deflate": "^1.1.0"
 	},
 	"jest": {
 		"collectCoverage": true,
