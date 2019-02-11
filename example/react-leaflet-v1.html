@@ -73,6 +73,12 @@
 				}
 
 				render() {
+					const { mapOptions, dataSet, cluster, minSize } = this.state;
+					const deflateOptions = {
+						minSize: minSize || 20,
+						markerCluster: cluster,
+						data: dataSet == 1 ? sample1 : sample2
+					};
 					return (
 						<div>
 							<h3>react-leaflet-deflate</h3>
@@ -81,7 +87,7 @@
 								<input
 									name="cluster"
 									type="checkbox"
-									defaultChecked={this.state.cluster}
+									defaultChecked={cluster}
 									onChange={this.setMarkerCluster}
 								/>
 							</fieldset>
@@ -89,26 +95,23 @@
 								<label htmlFor="minSize">Min. Size:</label>
 								<input
 									name="minSize"
-									value={this.state.minSize}
+									value={minSize}
 									onChange={this.setMinSize}
 								/>
 							</fieldset>
 							<fieldset>
 								<label htmlFor="geojson">Pick GeoJSON data set:</label>
-								<select name="geojson" value={this.state.dataSet} onChange={this.setDataSet}>
+								<select name="geojson" value={dataSet} onChange={this.setDataSet}>
 									<option value="1">Data set 1</option>
 									<option value="2">Data set 2</option>
 								</select>
 							</fieldset>
-							<Map {...this.state.mapOptions}>
+							<Map {...mapOptions}>
 								<TileLayer
 									attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 									url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
 								/>
-								<Deflate
-									data={this.state.dataSet == 1 ? sample1 : sample2}
-									markerCluster={this.state.cluster}
-								/>
+								<Deflate {...deflateOptions} />
 							</Map>
 						</div>
 					);
