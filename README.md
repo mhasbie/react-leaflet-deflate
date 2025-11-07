@@ -16,7 +16,7 @@ for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
 
 Substitutes polygons and lines with markers when their screen size falls below a defined threshold.
 
-*Tested with React 16.5.2, Leaflet 1.3.4, React-Leaflet 1.9.1, React-Leaflet 2.0.1, Leaflet.Deflate 1.0.0-alpha.3*
+*Tested with React 19.2.0, Leaflet 1.9.4, React-Leaflet 5.0.0, React-Leaflet 2.0.1, Leaflet.Deflate 2.1.0*
 
 ![Example](https://cloud.githubusercontent.com/assets/159510/7164588/090c06fe-e399-11e4-956d-0283ef7e69cf.gif)
 
@@ -45,34 +45,11 @@ npm install --save leaflet.markercluster
 
 ## Usage example
 
-### react-leaflet v1
+### react-leaflet v5
 
 ```javascript
 import { Map, TileLayer } from 'react-leaflet';
 import Deflate from 'react-leaflet-deflate';
-
-const geojson = {...};
-
-<Map center={[2.935403, 101.448205]} zoom={10}>
-  <TileLayer
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-  />
-
-  <Deflate
-    data={geojson}
-    minSize={10}
-    markerCluster={true}
-  />
-</Map>
-```
-
-### react-leaflet v2
-
-```javascript
-import { Map, TileLayer, withLeaflet } from 'react-leaflet';
-import DeflateDefault from 'react-leaflet-deflate';	// Import as DeflateDefault var
-const Deflate = withLeaflet(DeflateDefault);		// wrap and pass to our Deflate variable. The rest of the code is the same as react-leaflet v1 example.
 
 const geojson = {...};
 

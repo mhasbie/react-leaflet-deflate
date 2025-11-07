@@ -1,14 +1,19 @@
 /* eslint-disable */
+const path = require('path');
+
 module.exports = {
-	entry: './dist/react-leaflet-deflate.min.js',
+	entry: './src/index.jsx',
 	output: {
+		path: path.resolve(__dirname, 'dist'),
+		filename: 'react-leaflet-deflate.min.js',
 		library: {
 			root: 'ReactLeafletDeflate',
-			amd: 'react-leaflet-d3',
-			commonjs: 'react-leaflet-d3'
+			amd: 'react-leaflet-deflate',
+			commonjs: 'react-leaflet-deflate'
 		},
 		libraryExport: 'default',
-		libraryTarget: 'umd'
+		libraryTarget: 'umd',
+		globalObject: 'this'
 	},
 	externals: {
 		debug: 'debug',
@@ -34,10 +39,12 @@ module.exports = {
 			{
 				test: /\.(js|jsx)$/,
                 exclude: /(node_modules|bower_components)/,
-                loader: 'babel-loader',
+				loader: 'babel-loader',
                 options: {
-                    presets: ['env', 'react'],
-                    plugins: ['transform-class-properties']
+                    presets: ['@babel/preset-env', '@babel/preset-react'],
+                    plugins: [
+						'@babel/plugin-transform-class-properties'
+					]
                 }
 			},
 			{
@@ -49,6 +56,9 @@ module.exports = {
 				]
 			}
 		]
-	}
+	},
+	resolve: {
+		extensions: ['.js', '.jsx'], // Allow importing .js and .jsx without extension
+	},
 };
 
