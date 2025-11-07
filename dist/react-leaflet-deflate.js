@@ -8,14 +8,14 @@
  */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("react"), require("leaflet"));
+		module.exports = factory(require("react"));
 	else if(typeof define === 'function' && define.amd)
-		define([, ], factory);
+		define([], factory);
 	else if(typeof exports === 'object')
-		exports["react-leaflet-deflate"] = factory(require("react"), require("leaflet"));
+		exports["react-leaflet-deflate"] = factory(require("react"));
 	else
-		root["ReactLeafletDeflate"] = factory(root["React"], root["L"]);
-})(this, (__WEBPACK_EXTERNAL_MODULE_react__, __WEBPACK_EXTERNAL_MODULE_leaflet__) => {
+		root["ReactLeafletDeflate"] = factory(root["React"]);
+})(this, (__WEBPACK_EXTERNAL_MODULE_react__) => {
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
@@ -27,17 +27,6 @@ return /******/ (() => { // webpackBootstrap
 
 "use strict";
 eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   useAttribution: () => (/* binding */ useAttribution)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n\nfunction useAttribution(map, attribution) {\n    const attributionRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(attribution);\n    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function updateAttribution() {\n        if (attribution !== attributionRef.current && map.attributionControl != null) {\n            if (attributionRef.current != null) {\n                map.attributionControl.removeAttribution(attributionRef.current);\n            }\n            if (attribution != null) {\n                map.attributionControl.addAttribution(attribution);\n            }\n        }\n        attributionRef.current = attribution;\n    }, [\n        map,\n        attribution\n    ]);\n}\n\n\n//# sourceURL=webpack://ReactLeafletDeflate/./node_modules/@react-leaflet/core/lib/attribution.js?\n}");
-
-/***/ }),
-
-/***/ "./node_modules/@react-leaflet/core/lib/circle.js":
-/*!********************************************************!*\
-  !*** ./node_modules/@react-leaflet/core/lib/circle.js ***!
-  \********************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   updateCircle: () => (/* binding */ updateCircle)\n/* harmony export */ });\nfunction updateCircle(layer, props, prevProps) {\n    if (props.center !== prevProps.center) {\n        layer.setLatLng(props.center);\n    }\n    if (props.radius != null && props.radius !== prevProps.radius) {\n        layer.setRadius(props.radius);\n    }\n}\n\n\n//# sourceURL=webpack://ReactLeafletDeflate/./node_modules/@react-leaflet/core/lib/circle.js?\n}");
 
 /***/ }),
 
@@ -85,17 +74,6 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 /***/ }),
 
-/***/ "./node_modules/@react-leaflet/core/lib/dom.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/@react-leaflet/core/lib/dom.js ***!
-  \*****************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   addClassName: () => (/* binding */ addClassName),\n/* harmony export */   removeClassName: () => (/* binding */ removeClassName),\n/* harmony export */   updateClassName: () => (/* binding */ updateClassName)\n/* harmony export */ });\n/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ \"leaflet\");\n\nfunction splitClassName(className) {\n    return className.split(' ').filter(Boolean);\n}\nfunction addClassName(element, className) {\n    for (const cls of splitClassName(className)){\n        leaflet__WEBPACK_IMPORTED_MODULE_0__.DomUtil.addClass(element, cls);\n    }\n}\nfunction removeClassName(element, className) {\n    for (const cls of splitClassName(className)){\n        leaflet__WEBPACK_IMPORTED_MODULE_0__.DomUtil.removeClass(element, cls);\n    }\n}\nfunction updateClassName(element, prevClassName, nextClassName) {\n    if (element != null && nextClassName !== prevClassName) {\n        if (prevClassName != null && prevClassName.length > 0) {\n            removeClassName(element, prevClassName);\n        }\n        if (nextClassName != null && nextClassName.length > 0) {\n            addClassName(element, nextClassName);\n        }\n    }\n}\n\n\n//# sourceURL=webpack://ReactLeafletDeflate/./node_modules/@react-leaflet/core/lib/dom.js?\n}");
-
-/***/ }),
-
 /***/ "./node_modules/@react-leaflet/core/lib/element.js":
 /*!*********************************************************!*\
   !*** ./node_modules/@react-leaflet/core/lib/element.js ***!
@@ -140,17 +118,6 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 /***/ }),
 
-/***/ "./node_modules/@react-leaflet/core/lib/index.js":
-/*!*******************************************************!*\
-  !*** ./node_modules/@react-leaflet/core/lib/index.js ***!
-  \*******************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   CONTEXT_VERSION: () => (/* reexport safe */ _context_js__WEBPACK_IMPORTED_MODULE_3__.CONTEXT_VERSION),\n/* harmony export */   LeafletContext: () => (/* reexport safe */ _context_js__WEBPACK_IMPORTED_MODULE_3__.LeafletContext),\n/* harmony export */   addClassName: () => (/* reexport safe */ _dom_js__WEBPACK_IMPORTED_MODULE_6__.addClassName),\n/* harmony export */   createContainerComponent: () => (/* reexport safe */ _component_js__WEBPACK_IMPORTED_MODULE_2__.createContainerComponent),\n/* harmony export */   createControlComponent: () => (/* reexport safe */ _generic_js__WEBPACK_IMPORTED_MODULE_9__.createControlComponent),\n/* harmony export */   createControlHook: () => (/* reexport safe */ _control_js__WEBPACK_IMPORTED_MODULE_4__.createControlHook),\n/* harmony export */   createDivOverlayComponent: () => (/* reexport safe */ _component_js__WEBPACK_IMPORTED_MODULE_2__.createDivOverlayComponent),\n/* harmony export */   createDivOverlayHook: () => (/* reexport safe */ _div_overlay_js__WEBPACK_IMPORTED_MODULE_5__.createDivOverlayHook),\n/* harmony export */   createElementHook: () => (/* reexport safe */ _element_js__WEBPACK_IMPORTED_MODULE_7__.createElementHook),\n/* harmony export */   createElementObject: () => (/* reexport safe */ _element_js__WEBPACK_IMPORTED_MODULE_7__.createElementObject),\n/* harmony export */   createLayerComponent: () => (/* reexport safe */ _generic_js__WEBPACK_IMPORTED_MODULE_9__.createLayerComponent),\n/* harmony export */   createLayerHook: () => (/* reexport safe */ _layer_js__WEBPACK_IMPORTED_MODULE_11__.createLayerHook),\n/* harmony export */   createLeafComponent: () => (/* reexport safe */ _component_js__WEBPACK_IMPORTED_MODULE_2__.createLeafComponent),\n/* harmony export */   createLeafletContext: () => (/* reexport safe */ _context_js__WEBPACK_IMPORTED_MODULE_3__.createLeafletContext),\n/* harmony export */   createOverlayComponent: () => (/* reexport safe */ _generic_js__WEBPACK_IMPORTED_MODULE_9__.createOverlayComponent),\n/* harmony export */   createPathComponent: () => (/* reexport safe */ _generic_js__WEBPACK_IMPORTED_MODULE_9__.createPathComponent),\n/* harmony export */   createPathHook: () => (/* reexport safe */ _path_js__WEBPACK_IMPORTED_MODULE_14__.createPathHook),\n/* harmony export */   createTileLayerComponent: () => (/* reexport safe */ _generic_js__WEBPACK_IMPORTED_MODULE_9__.createTileLayerComponent),\n/* harmony export */   extendContext: () => (/* reexport safe */ _context_js__WEBPACK_IMPORTED_MODULE_3__.extendContext),\n/* harmony export */   removeClassName: () => (/* reexport safe */ _dom_js__WEBPACK_IMPORTED_MODULE_6__.removeClassName),\n/* harmony export */   updateCircle: () => (/* reexport safe */ _circle_js__WEBPACK_IMPORTED_MODULE_1__.updateCircle),\n/* harmony export */   updateClassName: () => (/* reexport safe */ _dom_js__WEBPACK_IMPORTED_MODULE_6__.updateClassName),\n/* harmony export */   updateGridLayer: () => (/* reexport safe */ _grid_layer_js__WEBPACK_IMPORTED_MODULE_10__.updateGridLayer),\n/* harmony export */   updateMediaOverlay: () => (/* reexport safe */ _media_overlay_js__WEBPACK_IMPORTED_MODULE_12__.updateMediaOverlay),\n/* harmony export */   useAttribution: () => (/* reexport safe */ _attribution_js__WEBPACK_IMPORTED_MODULE_0__.useAttribution),\n/* harmony export */   useEventHandlers: () => (/* reexport safe */ _events_js__WEBPACK_IMPORTED_MODULE_8__.useEventHandlers),\n/* harmony export */   useLayerLifecycle: () => (/* reexport safe */ _layer_js__WEBPACK_IMPORTED_MODULE_11__.useLayerLifecycle),\n/* harmony export */   useLeafletContext: () => (/* reexport safe */ _context_js__WEBPACK_IMPORTED_MODULE_3__.useLeafletContext),\n/* harmony export */   usePathOptions: () => (/* reexport safe */ _path_js__WEBPACK_IMPORTED_MODULE_14__.usePathOptions),\n/* harmony export */   withPane: () => (/* reexport safe */ _pane_js__WEBPACK_IMPORTED_MODULE_13__.withPane)\n/* harmony export */ });\n/* harmony import */ var _attribution_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./attribution.js */ \"./node_modules/@react-leaflet/core/lib/attribution.js\");\n/* harmony import */ var _circle_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./circle.js */ \"./node_modules/@react-leaflet/core/lib/circle.js\");\n/* harmony import */ var _component_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./component.js */ \"./node_modules/@react-leaflet/core/lib/component.js\");\n/* harmony import */ var _context_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./context.js */ \"./node_modules/@react-leaflet/core/lib/context.js\");\n/* harmony import */ var _control_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./control.js */ \"./node_modules/@react-leaflet/core/lib/control.js\");\n/* harmony import */ var _div_overlay_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./div-overlay.js */ \"./node_modules/@react-leaflet/core/lib/div-overlay.js\");\n/* harmony import */ var _dom_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dom.js */ \"./node_modules/@react-leaflet/core/lib/dom.js\");\n/* harmony import */ var _element_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./element.js */ \"./node_modules/@react-leaflet/core/lib/element.js\");\n/* harmony import */ var _events_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./events.js */ \"./node_modules/@react-leaflet/core/lib/events.js\");\n/* harmony import */ var _generic_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./generic.js */ \"./node_modules/@react-leaflet/core/lib/generic.js\");\n/* harmony import */ var _grid_layer_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./grid-layer.js */ \"./node_modules/@react-leaflet/core/lib/grid-layer.js\");\n/* harmony import */ var _layer_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./layer.js */ \"./node_modules/@react-leaflet/core/lib/layer.js\");\n/* harmony import */ var _media_overlay_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./media-overlay.js */ \"./node_modules/@react-leaflet/core/lib/media-overlay.js\");\n/* harmony import */ var _pane_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./pane.js */ \"./node_modules/@react-leaflet/core/lib/pane.js\");\n/* harmony import */ var _path_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./path.js */ \"./node_modules/@react-leaflet/core/lib/path.js\");\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n//# sourceURL=webpack://ReactLeafletDeflate/./node_modules/@react-leaflet/core/lib/index.js?\n}");
-
-/***/ }),
-
 /***/ "./node_modules/@react-leaflet/core/lib/layer.js":
 /*!*******************************************************!*\
   !*** ./node_modules/@react-leaflet/core/lib/layer.js ***!
@@ -159,17 +126,6 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 
 "use strict";
 eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   createLayerHook: () => (/* binding */ createLayerHook),\n/* harmony export */   useLayerLifecycle: () => (/* binding */ useLayerLifecycle)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var _attribution_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./attribution.js */ \"./node_modules/@react-leaflet/core/lib/attribution.js\");\n/* harmony import */ var _context_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./context.js */ \"./node_modules/@react-leaflet/core/lib/context.js\");\n/* harmony import */ var _events_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./events.js */ \"./node_modules/@react-leaflet/core/lib/events.js\");\n/* harmony import */ var _pane_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pane.js */ \"./node_modules/@react-leaflet/core/lib/pane.js\");\n\n\n\n\n\nfunction useLayerLifecycle(element, context) {\n    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function addLayer() {\n        const container = context.layerContainer ?? context.map;\n        container.addLayer(element.instance);\n        return function removeLayer() {\n            context.layerContainer?.removeLayer(element.instance);\n            context.map.removeLayer(element.instance);\n        };\n    }, [\n        context,\n        element\n    ]);\n}\nfunction createLayerHook(useElement) {\n    return function useLayer(props) {\n        const context = (0,_context_js__WEBPACK_IMPORTED_MODULE_2__.useLeafletContext)();\n        const elementRef = useElement((0,_pane_js__WEBPACK_IMPORTED_MODULE_4__.withPane)(props, context), context);\n        (0,_attribution_js__WEBPACK_IMPORTED_MODULE_1__.useAttribution)(context.map, props.attribution);\n        (0,_events_js__WEBPACK_IMPORTED_MODULE_3__.useEventHandlers)(elementRef.current, props.eventHandlers);\n        useLayerLifecycle(elementRef.current, context);\n        return elementRef;\n    };\n}\n\n\n//# sourceURL=webpack://ReactLeafletDeflate/./node_modules/@react-leaflet/core/lib/layer.js?\n}");
-
-/***/ }),
-
-/***/ "./node_modules/@react-leaflet/core/lib/media-overlay.js":
-/*!***************************************************************!*\
-  !*** ./node_modules/@react-leaflet/core/lib/media-overlay.js ***!
-  \***************************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   updateMediaOverlay: () => (/* binding */ updateMediaOverlay)\n/* harmony export */ });\n/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ \"leaflet\");\n\nfunction updateMediaOverlay(overlay, props, prevProps) {\n    if (props.bounds instanceof leaflet__WEBPACK_IMPORTED_MODULE_0__.LatLngBounds && props.bounds !== prevProps.bounds) {\n        overlay.setBounds(props.bounds);\n    }\n    if (props.opacity != null && props.opacity !== prevProps.opacity) {\n        overlay.setOpacity(props.opacity);\n    }\n    if (props.zIndex != null && props.zIndex !== prevProps.zIndex) {\n        // @ts-ignore missing in definition but inherited from ImageOverlay\n        overlay.setZIndex(props.zIndex);\n    }\n}\n\n\n//# sourceURL=webpack://ReactLeafletDeflate/./node_modules/@react-leaflet/core/lib/media-overlay.js?\n}");
 
 /***/ }),
 
@@ -253,10 +209,10 @@ eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpa
 /*!*************************!*\
   !*** ./src/Deflate.jsx ***!
   \*************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("{\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\nexports[\"default\"] = void 0;\nvar _hooks = __webpack_require__(/*! react-leaflet/hooks */ \"./node_modules/react-leaflet/lib/hooks.js\");\nvar _core = __webpack_require__(/*! @react-leaflet/core */ \"./node_modules/@react-leaflet/core/lib/index.js\");\n__webpack_require__(/*! leaflet.markercluster */ \"./node_modules/leaflet.markercluster/dist/leaflet.markercluster-src.js\");\n__webpack_require__(/*! Leaflet.Deflate */ \"./node_modules/Leaflet.Deflate/dist/L.Deflate.js\");\nfunction _typeof(o) { \"@babel/helpers - typeof\"; return _typeof = \"function\" == typeof Symbol && \"symbol\" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && \"function\" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? \"symbol\" : typeof o; }, _typeof(o); }\nfunction ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }\nfunction _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }\nfunction _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }\nfunction _toPropertyKey(t) { var i = _toPrimitive(t, \"string\"); return \"symbol\" == _typeof(i) ? i : i + \"\"; }\nfunction _toPrimitive(t, r) { if (\"object\" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || \"default\"); if (\"object\" != _typeof(i)) return i; throw new TypeError(\"@@toPrimitive must return a primitive value.\"); } return (\"string\" === r ? String : Number)(t); }\nvar initMapClasses = function initMapClasses() {\n  var map = (0, _hooks.useMap)();\n  var mapClassName = map.getContainer().className;\n  var isAnimClassApplied = mapClassName.indexOf('leaflet-cluster-anim') !== -1;\n  var isStyledClassApplied = mapClassName.indexOf('marker-cluster-styled') !== -1;\n  var isAnimatedClassApplied = mapClassName.indexOf('marker-cluster-animated') !== -1;\n  !isAnimClassApplied && (map.getContainer().className += ' leaflet-cluster-anim');\n  !isStyledClassApplied && (map.getContainer().className += ' marker-cluster-styled');\n  !isAnimatedClassApplied && (map.getContainer().className += ' marker-cluster-animated');\n};\nvar createDeflateLayer = function createDeflateLayer(props, context) {\n  var markerCluster = props.markerCluster,\n    data = props.data;\n  // This will add our Leaflet.Deflate (this.leafletElement) to the map--something that must happen BEFORE\n  // we can add anything to Leaflet.Deflate itself.\n\n  var deflateProps = _objectSpread({}, props);\n  if (markerCluster) {\n    initMapClasses();\n    var markerLayer = L.markerClusterGroup();\n    deflateProps.markerLayer = markerLayer;\n  }\n  var layer = new L.Deflate(deflateProps);\n  L.geoJSON(data, props).addTo(layer);\n  return (0, _core.createElementObject)(layer, context);\n};\nvar updateDeflateLayer = function updateDeflateLayer(layer, props, prevProps) {\n  (0, _core.updateGridLayer)(layer, props, prevProps);\n};\nvar _default = exports[\"default\"] = (0, _core.createLayerComponent)(createDeflateLayer, updateDeflateLayer);\n\n//# sourceURL=webpack://ReactLeafletDeflate/./src/Deflate.jsx?\n}");
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var react_leaflet_hooks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-leaflet/hooks */ \"./node_modules/react-leaflet/lib/hooks.js\");\n/* harmony import */ var _react_leaflet_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @react-leaflet/core */ \"./node_modules/@react-leaflet/core/lib/element.js\");\n/* harmony import */ var _react_leaflet_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @react-leaflet/core */ \"./node_modules/@react-leaflet/core/lib/generic.js\");\n/* harmony import */ var _react_leaflet_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @react-leaflet/core */ \"./node_modules/@react-leaflet/core/lib/grid-layer.js\");\n/* harmony import */ var leaflet_markercluster__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! leaflet.markercluster */ \"./node_modules/leaflet.markercluster/dist/leaflet.markercluster-src.js\");\n/* harmony import */ var leaflet_markercluster__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(leaflet_markercluster__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var Leaflet_Deflate__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! Leaflet.Deflate */ \"./node_modules/Leaflet.Deflate/dist/L.Deflate.js\");\n/* harmony import */ var Leaflet_Deflate__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(Leaflet_Deflate__WEBPACK_IMPORTED_MODULE_5__);\nfunction _typeof(o) { \"@babel/helpers - typeof\"; return _typeof = \"function\" == typeof Symbol && \"symbol\" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && \"function\" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? \"symbol\" : typeof o; }, _typeof(o); }\nfunction ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }\nfunction _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }\nfunction _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }\nfunction _toPropertyKey(t) { var i = _toPrimitive(t, \"string\"); return \"symbol\" == _typeof(i) ? i : i + \"\"; }\nfunction _toPrimitive(t, r) { if (\"object\" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || \"default\"); if (\"object\" != _typeof(i)) return i; throw new TypeError(\"@@toPrimitive must return a primitive value.\"); } return (\"string\" === r ? String : Number)(t); }\n\n\n\n\nvar initMapClasses = function initMapClasses() {\n  var map = (0,react_leaflet_hooks__WEBPACK_IMPORTED_MODULE_0__.useMap)();\n  var mapClassName = map.getContainer().className;\n  var isAnimClassApplied = mapClassName.indexOf('leaflet-cluster-anim') !== -1;\n  var isStyledClassApplied = mapClassName.indexOf('marker-cluster-styled') !== -1;\n  var isAnimatedClassApplied = mapClassName.indexOf('marker-cluster-animated') !== -1;\n  !isAnimClassApplied && (map.getContainer().className += ' leaflet-cluster-anim');\n  !isStyledClassApplied && (map.getContainer().className += ' marker-cluster-styled');\n  !isAnimatedClassApplied && (map.getContainer().className += ' marker-cluster-animated');\n};\nvar createDeflateLayer = function createDeflateLayer(props, context) {\n  var markerCluster = props.markerCluster,\n    data = props.data;\n  // This will add our Leaflet.Deflate (this.leafletElement) to the map--something that must happen BEFORE\n  // we can add anything to Leaflet.Deflate itself.\n\n  var deflateProps = _objectSpread({}, props);\n  if (markerCluster) {\n    initMapClasses();\n    var markerLayer = L.markerClusterGroup();\n    deflateProps.markerLayer = markerLayer;\n  }\n  var layer = new L.Deflate(deflateProps);\n  L.geoJSON(data, props).addTo(layer);\n  return (0,_react_leaflet_core__WEBPACK_IMPORTED_MODULE_1__.createElementObject)(layer, context);\n};\nvar updateDeflateLayer = function updateDeflateLayer(layer, props, prevProps) {\n  (0,_react_leaflet_core__WEBPACK_IMPORTED_MODULE_3__.updateGridLayer)(layer, props, prevProps);\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_react_leaflet_core__WEBPACK_IMPORTED_MODULE_2__.createLayerComponent)(createDeflateLayer, updateDeflateLayer));\n\n//# sourceURL=webpack://ReactLeafletDeflate/./src/Deflate.jsx?\n}");
 
 /***/ }),
 
@@ -264,21 +220,10 @@ eval("{\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}))
 /*!***********************!*\
   !*** ./src/index.jsx ***!
   \***********************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("{\n\nObject.defineProperty(exports, \"__esModule\", ({\n  value: true\n}));\nexports[\"default\"] = void 0;\nvar _Deflate = _interopRequireDefault(__webpack_require__(/*! ./Deflate */ \"./src/Deflate.jsx\"));\nfunction _interopRequireDefault(e) { return e && e.__esModule ? e : { \"default\": e }; }\nvar _default = exports[\"default\"] = _Deflate[\"default\"];\n\n//# sourceURL=webpack://ReactLeafletDeflate/./src/index.jsx?\n}");
-
-/***/ }),
-
-/***/ "leaflet":
-/*!************************************************************************!*\
-  !*** external {"commonjs":"leaflet","commonjs2":"leaflet","root":"L"} ***!
-  \************************************************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = __WEBPACK_EXTERNAL_MODULE_leaflet__;
+eval("{__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _Deflate__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Deflate */ \"./src/Deflate.jsx\");\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_Deflate__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\n\n//# sourceURL=webpack://ReactLeafletDeflate/./src/index.jsx?\n}");
 
 /***/ }),
 
@@ -320,6 +265,18 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_react__;
 /******/ 	}
 /******/ 	
 /************************************************************************/
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
+/******/ 		};
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/define property getters */
 /******/ 	(() => {
 /******/ 		// define getter functions for harmony exports

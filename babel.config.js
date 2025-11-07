@@ -4,7 +4,18 @@ module.exports = {
     '@babel/preset-react'
   ],
   plugins: [
-    '@babel/plugin-transform-class-properties',
-    '@babel/plugin-transform-modules-commonjs'
-  ]
+    '@babel/plugin-transform-class-properties'
+  ],
+  env: {
+    test: {
+      presets: [
+        '@babel/preset-env',
+        '@babel/preset-react'
+      ],
+      plugins: [
+        '@babel/plugin-transform-class-properties',
+        '@babel/plugin-transform-modules-commonjs'
+      ],
+    },
+  },
 };

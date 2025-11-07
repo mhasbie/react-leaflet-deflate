@@ -16,7 +16,7 @@ for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
 
 Substitutes polygons and lines with markers when their screen size falls below a defined threshold.
 
-*Tested with React 19.2.0, Leaflet 1.9.4, React-Leaflet 5.0.0, React-Leaflet 2.0.1, Leaflet.Deflate 2.1.0*
+*Tested with React 19.2.0, Leaflet 1.9.4, React-Leaflet 5.0.0, React-Leaflet 4.0.0, Leaflet.Deflate 2.1.0*
 
 ![Example](https://cloud.githubusercontent.com/assets/159510/7164588/090c06fe-e399-11e4-956d-0283ef7e69cf.gif)
 
