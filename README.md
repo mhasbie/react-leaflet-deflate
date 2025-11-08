@@ -48,12 +48,12 @@ npm install --save leaflet.markercluster
 ### react-leaflet v5
 
 ```javascript
-import { Map, TileLayer } from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import Deflate from 'react-leaflet-deflate';
 
 const geojson = {...};
 
-<Map center={[2.935403, 101.448205]} zoom={10}>
+<MapContainer center={[2.935403, 101.448205]} zoom={10}>
   <TileLayer
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -64,7 +64,7 @@ const geojson = {...};
     minSize={10}
     markerCluster={true}
   />
-</Map>
+</MapContainer>
 ```
 
 ### Options
