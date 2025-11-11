@@ -7,10 +7,23 @@ on:
     branches: [ "master" ]
   workflow_dispatch:
     inputs:
-      branch:
-        description: 'Branch to deploy from'
+      logLevel:
+        description: 'Log level'
         required: true
-        default: 'master'
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true
 
 jobs:
   build:
