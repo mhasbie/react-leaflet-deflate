@@ -4,6 +4,7 @@ src/
 example/
 coverage/
 __tests__/
+.github/
 
 #Files
 .babelrc

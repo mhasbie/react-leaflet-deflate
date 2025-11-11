@@ -16,21 +16,27 @@ module.exports = {
 		globalObject: 'this'
 	},
 	externals: {
-		debug: 'debug',
 		leaflet: {
 			commonjs: 'leaflet',
 			commonjs2: 'leaflet',
+			amd: 'leaflet',
 			root: 'L'
 		},
 		'react-leaflet': {
 			commonjs: 'react-leaflet',
 			commonjs2: 'react-leaflet',
+			amd: 'react-leaflet',
 			root: 'ReactLeaflet'
 		},
 		react: {
 			commonjs: 'react',
 			commonjs2: 'react',
 			root: 'React'
+		},
+		'react-dom': {
+			commonjs: 'react-dom',
+			commonjs2: 'react-dom',
+			root: 'ReactDOM'
 		}
 	},
 	mode: 'production',

@@ -1,9 +1,9 @@
-import { useMap } from 'react-leaflet/hooks';
 import {
     createElementObject,
     createLayerComponent,
     updateGridLayer,
 } from "@react-leaflet/core";
+import { useMap } from "react-leaflet";
 import 'leaflet.markercluster';
 import 'Leaflet.Deflate';
 
