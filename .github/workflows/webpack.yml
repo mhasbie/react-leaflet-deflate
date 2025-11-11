@@ -2,9 +2,15 @@ name: NodeJS with Webpack
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "feature/**", "bugfix/**" ]
   pull_request:
     branches: [ "master" ]
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to deploy from'
+        required: true
+        default: 'master'
 
 jobs:
   build:
