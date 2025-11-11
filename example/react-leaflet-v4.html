@@ -1,0 +1,138 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>react-leaflet-deflate Example for react-leaflet v4</title>
+		<meta name="description" content="https://github.com/mhasbie/react-leaflet-deflate">
+
+		<script type="importmap">
+        {
+          "imports": {
+            "react": "https://esm.sh/react@19",
+            "react-dom/client": "https://esm.sh/react-dom@19/client",
+            "react-leaflet": "https://cdn.esm.sh/react-leaflet",
+            "react-leaflet-deflate": "https://unpkg.com/react-leaflet-deflate@3.0.0-beta.1/lib/Deflate.js"
+          }
+        }
+  	    </script>
+
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" rel="stylesheet">
+		<link href="https://rawgit.com/Leaflet/Leaflet.markercluster/leaflet-0.7/dist/MarkerCluster.Default.css" rel="stylesheet">
+		<link href="https://rawgit.com/Leaflet/Leaflet.markercluster/leaflet-0.7/dist/MarkerCluster.css" rel="stylesheet">
+		<style>
+			body {
+				font-family: Arial, Helvetica, sans-serif;
+			}
+			.leaflet-container {
+				position: absolute;
+				top: 180px;
+				bottom: 0;
+				left: 0;
+				right: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container"></div>
+  
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.28.4/babel.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet-src.js"></script>
+		<!--<script src="https://unpkg.com/react-leaflet-deflate@3.0.0-beta.1/dist/react-leaflet-deflate.js" crossorigin="anonymous"></script>-->
+		<!-- <script src="../dist/react-leaflet-deflate.js"></script> -->
+		<script src="./geojsonSamples.js"></script>
+		<script type="text/babel" data-type="module">
+			//import { useState } from React; 
+			import React from 'react';
+        	import ReactDOM from 'react-dom/client';
+			// import * as ReactLeaflet from 'https://cdn.esm.sh/react-leaflet';
+			// import { MapContainer, TileLayer } from 'https://cdn.esm.sh/react-leaflet';
+			import { MapContainer, TileLayer } from 'react-leaflet';
+			// import * as Deflate from 'https://unpkg.com/react-leaflet-deflate@3.0.0-beta.1/lib/Deflate.js';
+    		// import { useMap } from 'https://cdn.esm.sh/react-leaflet/hooks';
+			// const Deflate = window.ReactLeafletDeflate;
+			// import Deflate from '../lib/index.js';
+
+			import Deflate from 'react-leaflet-deflate';
+
+			// https://npmcdn.com/react-leaflet-deflate@2.2.0/dist/react-leaflet-deflate.min.js
+
+			console.log("Deflate", Deflate);
+
+			const DeflateExample = () => {
+				const [markerCluster, setMarkerCluster] = React.useState(true);
+				const [dataSet, setDataSet] = React.useState(1);
+				const [minSize, setMinSize] = React.useState(null);
+
+				const onChangeMarkerCluster = (e) => {
+					setMarkerCluster(!e.target.value);
+				};
+
+				const onChangeDataSet = (e) => {
+					setDataSet(e.target.value);
+				};
+
+				const onChangeMinSize = (e) => {
+					const minSizeInput = e.target.value;
+					let minSizeFloat = parseFloat(minSizeInput);
+					if(isNaN(minSizeFloat) || minSizeFloat <= 1.0) {
+						minSizeFloat = null;
+					}
+					setMinSize(minSizeFloat);
+				}
+
+				const mapOptions = {
+					center: [2.935403, 101.448205],
+					zoom: 10,
+					minZoom: 1,
+					maxZoom: 22
+				};
+
+				const deflateOptions = {
+					minSize: minSize || 20,
+					markerCluster: markerCluster,
+					data: dataSet == 1 ? sample1 : sample2
+				};
+
+				return (
+					<div>
+						<h3>react-leaflet-deflate</h3>
+						<fieldset>
+							<label htmlFor="cluster">Enable marker clustering:</label>
+							<input
+								name="cluster"
+								type="checkbox"
+								defaultChecked={markerCluster}
+								onChange={onChangeMarkerCluster}
+							/>
+						</fieldset>
+						<fieldset>
+							<label htmlFor="minSize">Min. Size:</label>
+							<input
+								name="minSize"
+								value={minSize}
+								onChange={onChangeMinSize}
+							/>
+						</fieldset>
+						<fieldset>
+							<label htmlFor="geojson">Pick GeoJSON data set:</label>
+							<select name="geojson" value={dataSet} onChange={onChangeDataSet}>
+								<option value="1">Data set 1</option>
+								<option value="2">Data set 2</option>
+							</select>
+						</fieldset>
+						<MapContainer {...mapOptions}>
+							<TileLayer
+								attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+								url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+							/>
+							<Deflate {...deflateOptions} />
+						</MapContainer>
+					</div>
+				);
+			}
+
+			const root = ReactDOMClient.createRoot(document.getElementById('container'));
+      		root.render(<DeflateExample />);
+		</script>
+	</body>
+</html>
