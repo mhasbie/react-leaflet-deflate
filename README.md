@@ -23,6 +23,7 @@ Substitutes polygons and lines with markers when their screen size falls below a
 | ---					| ---	|
 | `react-leaflet@1.9.1`	| [`CodePen`](https://codepen.io/m_hasbie/full/jvgeVR/) |
 | `react-leaflet@2.x`	| [`CodePen`](https://codepen.io/m_hasbie/full/MqNPRy/) |
+| `react-leaflet@5.x`	| [`CodePen`](https://codepen.io/m_hasbie/full/wBGampr) |
 
 
 ## Installation
