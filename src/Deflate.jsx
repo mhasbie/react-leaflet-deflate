@@ -1,66 +1,68 @@
+import React, { useEffect } from 'react';
+import { useMap } from 'react-leaflet/hooks';
+import L from 'leaflet';
 import {
-    createElementObject,
-    createLayerComponent,
-    updateGridLayer,
+	addClassName
 } from "@react-leaflet/core";
-import { useMap } from "react-leaflet";
 import 'leaflet.markercluster';
 import 'Leaflet.Deflate';
 
-const initMapClasses = () => {
+
+function Deflate(props) {
 	const map = useMap();
+	const deflateLayerRef = React.useRef(null);
 
-	const mapClassName = map.getContainer().className;
+	useEffect(() => {
+		const { data, markerCluster } = props;
 
-	const isAnimClassApplied = mapClassName.indexOf('leaflet-cluster-anim') !== -1;
-	const isStyledClassApplied = mapClassName.indexOf('marker-cluster-styled') !== -1;
-	const isAnimatedClassApplied = mapClassName.indexOf('marker-cluster-animated') !== -1;
+		if (deflateLayerRef.current) {
+			map.removeLayer(deflateLayerRef.current);
+		}
 
-	!isAnimClassApplied && (
-		map.getContainer().className += ' leaflet-cluster-anim'
-	);
+		const deflateProps = { ...props };
 
-	!isStyledClassApplied && (
-		map.getContainer().className += ' marker-cluster-styled'
-	);
+		if (markerCluster) {
+			initMapClasses();
 
-	!isAnimatedClassApplied && (
-		map.getContainer().className += ' marker-cluster-animated'
-	);
-}
+			const markerLayer = L.markerClusterGroup();
+			deflateProps.markerLayer = markerLayer;
+		}
 
-const createDeflateLayer = (
-    props,
-    context
-) => {
-	const { markerCluster, data } = props;
-	// This will add our Leaflet.Deflate (this.leafletElement) to the map--something that must happen BEFORE
-	// we can add anything to Leaflet.Deflate itself.
+		const newDeflateLayer = new L.Deflate(deflateProps);
+		L.geoJSON(data, props).addTo(newDeflateLayer);
 
-	const deflateProps = { ...props };
+		deflateLayerRef.current = newDeflateLayer;
+		map.addLayer(newDeflateLayer);
 
-	if (markerCluster) {
-		initMapClasses();
+		// Cleanup function to remove the layer when the component unmounts
+		return () => {
+			if (deflateLayerRef.current) {
+				map.removeLayer(deflateLayerRef.current);
+			}
+		};
+	}, [props, map]);
 
-		const markerLayer = L.markerClusterGroup();
-		deflateProps.markerLayer = markerLayer;
+	const initMapClasses = () => {
+		const mapClassName = map.getContainer().className;
+
+		const isAnimClassApplied = mapClassName.indexOf('leaflet-cluster-anim') !== -1;
+		const isStyledClassApplied = mapClassName.indexOf('marker-cluster-styled') !== -1;
+		const isAnimatedClassApplied = mapClassName.indexOf('marker-cluster-animated') !== -1;
+
+		!isAnimClassApplied && (
+			addClassName(map.getContainer(), 'leaflet-cluster-anim')
+		);
+
+		!isStyledClassApplied && (
+			addClassName(map.getContainer(), 'marker-cluster-styled')
+		);
+
+		!isAnimatedClassApplied && (
+			addClassName(map.getContainer(), 'marker-cluster-animated')
+		);
 	}
 
-    const layer = new L.Deflate(deflateProps);
-	L.geoJSON(data, props).addTo(layer);
+  	return null;
+}
 
-    return createElementObject(layer, context);
-};
-
-const updateDeflateLayer = (
-    layer,
-    props,
-    prevProps
-) => {
-    updateGridLayer(layer, props, prevProps);
-};
-
-export default createLayerComponent(
-    createDeflateLayer,
-    updateDeflateLayer
-);
+export default Deflate;
