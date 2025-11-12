@@ -11,7 +11,7 @@
             "react-dom/client": "https://esm.sh/react-dom@19.2.0/client",
             "react-leaflet": "https://esm.sh/react-leaflet@5.0.0/",
             "@react-leaflet/core": "https://cdn.esm.sh/@react-leaflet/core",
-            "react-leaflet-deflate": "https://esm.sh/react-leaflet-deflate@3.0.0-beta.2/",
+            "react-leaflet-deflate": "https://esm.sh/react-leaflet-deflate@3.0.0-beta.3/",
             "Leaflet.Deflate": "https://cdn.jsdelivr.net/npm/Leaflet.Deflate@2.1.0/dist/L.Deflate.min.js",
             "leaflet.markercluster": "https://unpkg.com/leaflet.markercluster"
           }
@@ -53,7 +53,7 @@
 				const [minSize, setMinSize] = React.useState(null);
 
 				const onChangeMarkerCluster = (e) => {
-					setMarkerCluster(!e.target.value);
+					setMarkerCluster(e.target.checked);
 				};
 
 				const onChangeDataSet = (e) => {
@@ -69,6 +69,11 @@
 					setMinSize(minSizeFloat);
 				}
 
+				const onEachFeature = (feature, featureLayer) => {
+					featureLayer.bindPopup(`<div>This is feature #${feature.properties.id}</div>`);
+					featureLayer.bindTooltip(`Feature: #${feature.properties.id}`);
+				};
+
 				const mapOptions = {
 					center: [2.935403, 101.448205],
 					zoom: 10,
@@ -79,7 +84,8 @@
 				const deflateOptions = {
 					minSize: minSize || 20,
 					markerCluster: markerCluster,
-					data: dataSet == 1 ? sample1 : sample2
+					data: dataSet == 1 ? sample1 : sample2,
+					onEachFeature: onEachFeature
 				};
 
 				return (
