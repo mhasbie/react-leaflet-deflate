@@ -1,10 +1,10 @@
 #Directories
 node_modules/
-lib/
 src/
 example/
 coverage/
 __tests__/
+.github/
 
 #Files
 .babelrc
@@ -13,3 +13,4 @@ __tests__/
 .travis.yml
 .vscode
 webpack.config.js
+babel.config.js

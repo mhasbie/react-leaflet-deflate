@@ -49,7 +49,7 @@ var sample2 = {
   "features": [
     {
       "type": "Feature",
-      "properties": {},
+      "properties": { id: 1 },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -80,7 +80,7 @@ var sample2 = {
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": { id: 2 },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -111,7 +111,7 @@ var sample2 = {
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": { id: 3},
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -122,7 +122,7 @@ var sample2 = {
     },
     {
       "type": "Feature",
-      "properties": {},
+      "properties": { id: 4 },
       "geometry": {
         "type": "LineString",
         "coordinates": [

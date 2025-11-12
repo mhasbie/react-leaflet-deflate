@@ -3,9 +3,6 @@
 
 [![version](https://img.shields.io/npm/v/react-leaflet-deflate.svg?style=plastic)](http://npm.im/react-leaflet-deflate)
 [![react-leaflet compatibility](https://img.shields.io/npm/dependency-version/react-leaflet-deflate/peer/react-leaflet.svg?style=plastic)](https://github.com/mhasbie/react-leaflet-deflate)
-[![travis build](https://img.shields.io/travis/mhasbie/react-leaflet-deflate.svg?style=plastic)](https://travis-ci.org/mhasbie/react-leaflet-deflate)
-[![dependencies](https://img.shields.io/david/mhasbie/react-leaflet-deflate.svg?style=plastic)](https://david-dm.org/mhasbie/react-leaflet-deflate)
-[![peer dependencies](https://img.shields.io/david/peer/mhasbie/react-leaflet-deflate.svg?style=plastic)](https://david-dm.org/mhasbie/react-leaflet-deflate?type=peer)
 [![issues](https://img.shields.io/github/issues/mhasbie/react-leaflet-deflate.svg?style=plastic)](https://github.com/mhasbie/react-leaflet-deflate/issues)
 [![downloads](https://img.shields.io/npm/dt/react-leaflet-deflate.svg?style=plastic)](http://npm-stat.com/charts.html?package=react-leaflet-deflate&from=2018-01-01)
 [![MIT License](https://img.shields.io/npm/l/react-leaflet-deflate.svg?style=plastic)](http://opensource.org/licenses/MIT)
@@ -16,7 +13,7 @@ for [react-leaflet](https://github.com/PaulLeCam/react-leaflet).
 
 Substitutes polygons and lines with markers when their screen size falls below a defined threshold.
 
-*Tested with React 16.5.2, Leaflet 1.3.4, React-Leaflet 1.9.1, React-Leaflet 2.0.1, Leaflet.Deflate 1.0.0-alpha.3*
+*Tested with React 19.2.0, Leaflet 1.9.4, React-Leaflet 5.0.0, React-Leaflet 4.0.0, Leaflet.Deflate 2.1.0*
 
 ![Example](https://cloud.githubusercontent.com/assets/159510/7164588/090c06fe-e399-11e4-956d-0283ef7e69cf.gif)
 
@@ -26,6 +23,7 @@ Substitutes polygons and lines with markers when their screen size falls below a
 | ---					| ---	|
 | `react-leaflet@1.9.1`	| [`CodePen`](https://codepen.io/m_hasbie/full/jvgeVR/) |
 | `react-leaflet@2.x`	| [`CodePen`](https://codepen.io/m_hasbie/full/MqNPRy/) |
+| `react-leaflet@5.x`	| [`CodePen`](https://codepen.io/m_hasbie/full/wBGampr) |
 
 
 ## Installation
@@ -45,15 +43,15 @@ npm install --save leaflet.markercluster
 
 ## Usage example
 
-### react-leaflet v1
+### react-leaflet v5
 
 ```javascript
-import { Map, TileLayer } from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 import Deflate from 'react-leaflet-deflate';
 
 const geojson = {...};
 
-<Map center={[2.935403, 101.448205]} zoom={10}>
+<MapContainer center={[2.935403, 101.448205]} zoom={10}>
   <TileLayer
     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -64,30 +62,7 @@ const geojson = {...};
     minSize={10}
     markerCluster={true}
   />
-</Map>
-```
-
-### react-leaflet v2
-
-```javascript
-import { Map, TileLayer, withLeaflet } from 'react-leaflet';
-import DeflateDefault from 'react-leaflet-deflate';	// Import as DeflateDefault var
-const Deflate = withLeaflet(DeflateDefault);		// wrap and pass to our Deflate variable. The rest of the code is the same as react-leaflet v1 example.
-
-const geojson = {...};
-
-<Map center={[2.935403, 101.448205]} zoom={10}>
-  <TileLayer
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-    attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-  />
-
-  <Deflate
-    data={geojson}
-    minSize={10}
-    markerCluster={true}
-  />
-</Map>
+</MapContainer>
 ```
 
 ### Options
