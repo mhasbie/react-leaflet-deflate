@@ -1,6 +1,10 @@
 react-leaflet-deflate Changelog
 =========================
 
+## 3.0.1 (2025-11-28)
+
+* NPM Audit Fix
+
 ## 3.0.0 (2025-11-07)
 
 * Update Leaflet.Deflate dependency to 2.1.0.
