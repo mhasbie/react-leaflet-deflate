@@ -18,6 +18,7 @@
 		"type": "git",
 		"url": "git+https://github.com/mhasbie/react-leaflet-deflate.git"
 	},
+	"homepage": "https://mhasbie.github.io/react-leaflet-deflate/",
 	"keywords": [
 		"react",
 		"leaflet",
