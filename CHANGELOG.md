@@ -1,6 +1,13 @@
 react-leaflet-deflate Changelog
 =========================
 
+
+## 3.1.0 (2025-12-05)
+
+* Add gh-pages docs
+* Update dependencies
+
+
 ## 3.0.1 (2025-11-28)
 
 * NPM Audit Fix

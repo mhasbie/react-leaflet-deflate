@@ -72,12 +72,12 @@ Option          | Type      | Default | Description
 `data`          | `object`     | `{}`    | Required. A valid [GeoJSON object](http://geojson.org/geojson-spec.html).
 `minSize`       | `int`     | `20`    | Defines the minimum width and height in pixels for a path to be displayed in its actual shape.
 `markerOptions` | `object` or `function`  | `{}`    | Optional. Customize the markers of deflated features using [Leaflet marker options](http://leafletjs.com/reference-1.3.0.html#marker).
-`markerCluster` | `boolean` | `false` | Indicates whether markers should be clustered. Requires `Leaflet.MarkerCluser`.
+`markerCluster` | `boolean` | `false` | Indicates whether markers should be clustered. Requires `Leaflet.markercluster`.
 `markerClusterOptions` | `object` | `{}`    | Optional. Customize the appearance and behaviour of clustered markers using [`Leaflet.markercluster` options](https://github.com/Leaflet/Leaflet.markercluster#options).
 `pointToLayer`  | `function`  | `{}`    | [Leaflet geojson pointToLayer options](http://leafletjs.com/reference-1.3.0.html#geojson-pointtolayer).
-`style`         | `function`  | `{}`    | Style to apply to polygons or lines. [Leaflet geojson style options](http://leafletjs.com/reference-1.3.0.html#geojson-style).
-`onEachFeature` | `function`  | `{}`    | Function to execute on each geojson feature. [Leaflet geojson onEachFeature options](http://leafletjs.com/reference-1.3.0.html#geojson-oneachfeature).
-`filter`        | `function`  | `{}`    | Filter function to apply to geojson features. [Leaflet geojson filter options](http://leafletjs.com/reference-1.3.0.html#geojson-filter).
+`style`         | `function`  | `{}`    | Style to apply to polygons or lines. [Leaflet geojson style options](https://leafletjs.com/reference.html#geojson-style).
+`onEachFeature` | `function`  | `{}`    | Function to execute on each geojson feature. [Leaflet geojson onEachFeature options](https://leafletjs.com/reference.html#geojson-oneachfeature).
+`filter`        | `function`  | `{}`    | Filter function to apply to geojson features. [Leaflet geojson filter options](https://leafletjs.com/reference.html#geojson-filter).
 
 
 # Credits
