@@ -41,6 +41,10 @@ npm install --save react-leaflet-deflate
 npm install --save leaflet.markercluster
 ```
 
+## Releases
+
+Merging a pull request into `master` runs the release workflow. Before merging a release PR, update the version in both `package.json` and `package-lock.json`. The workflow uses that version to stage the package on npm and create the GitHub Release tag (`v<version>`), and stops if the tag already exists. The GitHub Release is created when staging succeeds; the npm version is not publicly available until it is approved.
+
 ## Usage example
 
 ### react-leaflet v5
