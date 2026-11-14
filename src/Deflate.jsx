@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react';
-import { useMap } from 'react-leaflet/hooks';
+import { useMap } from 'react-leaflet';
 import L from 'leaflet';
-import {
-	addClassName
-} from "@react-leaflet/core";
 import 'leaflet.markercluster';
 import 'Leaflet.Deflate';
 
@@ -43,23 +40,16 @@ function Deflate(props) {
 	}, [props, map]);
 
 	const initMapClasses = () => {
-		const mapClassName = map.getContainer().className;
+		const container = map.getContainer();
+		const mapClassName = container.className;
 
 		const isAnimClassApplied = mapClassName.indexOf('leaflet-cluster-anim') !== -1;
 		const isStyledClassApplied = mapClassName.indexOf('marker-cluster-styled') !== -1;
 		const isAnimatedClassApplied = mapClassName.indexOf('marker-cluster-animated') !== -1;
 
-		!isAnimClassApplied && (
-			addClassName(map.getContainer(), 'leaflet-cluster-anim')
-		);
-
-		!isStyledClassApplied && (
-			addClassName(map.getContainer(), 'marker-cluster-styled')
-		);
-
-		!isAnimatedClassApplied && (
-			addClassName(map.getContainer(), 'marker-cluster-animated')
-		);
+		!isAnimClassApplied && L.DomUtil.addClass(container, 'leaflet-cluster-anim');
+		!isStyledClassApplied && L.DomUtil.addClass(container, 'marker-cluster-styled');
+		!isAnimatedClassApplied && L.DomUtil.addClass(container, 'marker-cluster-animated');
 	}
 
   	return null;

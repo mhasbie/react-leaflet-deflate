@@ -91,4 +91,18 @@ describe('Deflate', () => {
     expect(markers.length).toBeGreaterThan(0);
     expect(markers[0]).toBeInTheDocument();
   });
+
+  it('Should apply marker cluster classes when markerCluster is enabled', () => {
+    const { container } = render(
+      <MapContainer center={[0, 0]} zoom={1} minZoom={1} maxZoom={22} style={{ height: 400, width: 600 }}>
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+        <Deflate data={data} markerCluster={true} minSize={10} />
+      </MapContainer>
+    );
+
+    const mapEl = container.querySelector('.leaflet-container');
+    expect(mapEl).toHaveClass('leaflet-cluster-anim');
+    expect(mapEl).toHaveClass('marker-cluster-styled');
+    expect(mapEl).toHaveClass('marker-cluster-animated');
+  });
 });
