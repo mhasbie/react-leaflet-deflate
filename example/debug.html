@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>react-leaflet-deflate source debug</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+    <style>
+      body { font-family: sans-serif; margin: 16px; }
+      .controls { display: flex; gap: 16px; margin-bottom: 12px; }
+      .map { height: 500px; width: min(800px, 100%); }
+      #error { color: #b00020; white-space: pre-wrap; }
+    </style>
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@19.2.0",
+          "react-dom": "https://esm.sh/react-dom@19.2.0?external=react",
+          "react-dom/client": "https://esm.sh/react-dom@19.2.0/client?external=react",
+          "react-leaflet": "https://esm.sh/react-leaflet@5.0.0?external=react,react-dom,leaflet",
+          "leaflet": "https://esm.sh/leaflet@1.9.4",
+          "leaflet.markercluster": "/debug/empty-module.js",
+          "Leaflet.Deflate": "/debug/empty-module.js"
+        }
+      }
+    </script>
+    <script src="https://unpkg.com/@babel/standalone@7.28.5/babel.min.js"></script>
+  </head>
+  <body>
+    <h1>Deflate source debug</h1>
+    <p>Loaded from <code>src/Deflate.jsx</code>. Use the map controls to check deflation at different zoom levels.</p>
+    <div id="root"></div>
+    <pre id="error" role="alert"></pre>
+
+    <script type="module">
+      import React, { useEffect, useState } from 'react';
+      import ReactDOM from 'react-dom/client';
+      import * as LeafletModule from 'leaflet';
+      import { MapContainer, useMap } from 'react-leaflet';
+
+      const errorOutput = document.getElementById('error');
+      const leaflet = LeafletModule.default || LeafletModule;
+      window.L = leaflet;
+
+      function loadScript(src) {
+        return new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = src;
+          script.onload = resolve;
+          script.onerror = () => reject(new Error(`Unable to load ${src}`));
+          document.head.appendChild(script);
+        });
+      }
+
+      const data = {
+        type: 'FeatureCollection',
+        features: [
+          [-0.06, -0.02, 1],
+          [0, 0.02, 2],
+          [0.06, -0.02, 3],
+        ].map(([longitude, latitude, id]) => ({
+          type: 'Feature',
+          properties: { id },
+          geometry: {
+            type: 'Polygon',
+            coordinates: [[
+              [longitude - 0.025, latitude - 0.025],
+              [longitude + 0.025, latitude - 0.025],
+              [longitude + 0.025, latitude + 0.025],
+              [longitude - 0.025, latitude + 0.025],
+              [longitude - 0.025, latitude - 0.025],
+            ]],
+          },
+        })),
+      };
+
+      function ZoomReporter() {
+        const map = useMap();
+
+        useEffect(() => {
+          const output = document.getElementById('zoom');
+          const reportZoom = () => {
+            output.textContent = String(map.getZoom());
+          };
+
+          map.on('zoomend', reportZoom);
+          reportZoom();
+          return () => map.off('zoomend', reportZoom);
+        }, [map]);
+
+        return null;
+      }
+
+      function App({ Deflate }) {
+        const [markerCluster, setMarkerCluster] = useState(true);
+        const [minSize, setMinSize] = useState(20);
+
+        return React.createElement(React.Fragment, null,
+          React.createElement('div', { className: 'controls' },
+            React.createElement('label', null,
+              React.createElement('input', {
+                type: 'checkbox',
+                checked: markerCluster,
+                onChange: (event) => setMarkerCluster(event.target.checked),
+              }),
+              ' Marker clustering',
+            ),
+            React.createElement('label', null,
+              'Minimum size ',
+              React.createElement('input', {
+                type: 'number',
+                value: minSize,
+                onChange: (event) => setMinSize(Number(event.target.value)),
+              }),
+            ),
+          ),
+          React.createElement('p', null, 'Zoom: ',
+            React.createElement('output', { id: 'zoom' }, '4'),
+          ),
+          React.createElement(MapContainer, {
+            center: [0, 0],
+            zoom: 4,
+            minZoom: 1,
+            maxZoom: 22,
+            className: 'map',
+          },
+            React.createElement(ZoomReporter),
+            React.createElement(Deflate, {
+              data,
+              minSize,
+              markerCluster,
+              onEachFeature: (feature, layer) => {
+                layer.bindPopup(`Feature #${feature.properties.id}`);
+              },
+            }),
+          ),
+        );
+      }
+
+      async function start() {
+        await loadScript('https://unpkg.com/leaflet@1.9.4/dist/leaflet.js');
+        window.L = leaflet;
+        await loadScript('https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js');
+        await loadScript('https://cdn.jsdelivr.net/npm/Leaflet.Deflate@2.1.0/dist/L.Deflate.js');
+
+        const response = await fetch('/src/Deflate.jsx');
+        if (!response.ok) {
+          throw new Error(`Unable to load src/Deflate.jsx (${response.status})`);
+        }
+
+        const source = await response.text();
+        const { code } = Babel.transform(source, {
+          filename: 'src/Deflate.jsx',
+          presets: [['env', { modules: false }], 'react'],
+          sourceMaps: 'inline',
+        });
+        const sourceUrl = URL.createObjectURL(new Blob(
+          [`${code}\n//# sourceURL=src/Deflate.jsx`],
+          { type: 'text/javascript' },
+        ));
+        const { default: Deflate } = await import(sourceUrl);
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+          React.createElement(App, { Deflate }),
+        );
+      }
+
+      start().catch((error) => {
+        errorOutput.textContent = error.stack || error.message;
+        throw error;
+      });
+    </script>
+  </body>
+</html>

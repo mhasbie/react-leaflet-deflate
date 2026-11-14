@@ -1,6 +1,13 @@
 react-leaflet-deflate Changelog
 =========================
 
+## 3.1.3 (2026-11-14)
+
+* Fix UMD build runtime error when `markerCluster` is enabled: use Leaflet's `DomUtil.addClass` instead of the mis-externalized `@react-leaflet/core` helper.
+* Remove unused dependencies.
+* Add `react` to `peerDependencies`.
+* Align `jest-environment-jsdom` with Jest 29.
+
 ## 3.1.2 (2026-01-11)
 
 * NPM Audit Fix

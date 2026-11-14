@@ -41,6 +41,10 @@ npm install --save react-leaflet-deflate
 npm install --save leaflet.markercluster
 ```
 
+## Releases
+
+Merging a pull request into `master` runs the release workflow. Before merging a release PR, update the version in both `package.json` and `package-lock.json`. The workflow uses that version to stage the package on npm and create the GitHub Release tag (`v<version>`), and stops if the tag already exists. The GitHub Release is created when staging succeeds; the npm version is not publicly available until it is approved.
+
 ## Usage example
 
 ### react-leaflet v5
@@ -83,6 +87,29 @@ Option          | Type      | Default | Description
 # Credits
   - [oliverroick](https://github.com/oliverroick) and the other [contributors](https://github.com/oliverroick/Leaflet.Deflate/graphs/contributors) to for the original work on `Leaflet.Deflate`.
   - [clintharris](https://github.com/clintharris) for updating `react-leaflet-deflate` to reference `Leaflet.Deflate` as an external dependency, support property changes, and work with `react-leaflet` v2.
+
+# Tests
+
+For instructions on the browser debug example, see [example/README.md](example/README.md).
+
+Run the Jest/React Testing Library unit suite with:
+
+```bash
+npm test
+```
+
+The Playwright tests run a local Leaflet fixture without external tiles or CDN dependencies. Install the Chromium browser once, then run:
+
+```bash
+npx playwright install chromium
+npm run test:e2e
+```
+
+To run both suites:
+
+```bash
+npm run test:all
+```
 
 # License
 

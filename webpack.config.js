@@ -28,12 +28,6 @@ module.exports = {
 			amd: 'react-leaflet',
 			root: 'ReactLeaflet'
 		},
-		'@react-leaflet/core': {
-			commonjs: 'react-leaflet',
-			commonjs2: 'react-leaflet',
-			amd: 'react-leaflet-core',
-			root: 'ReactLeafletCore'
-		},
 		react: {
 			commonjs: 'react',
 			commonjs2: 'react',
@@ -59,14 +53,6 @@ module.exports = {
 					]
                 }
 			},
-			{
-				test: /\.css$/,
-				exclude: /node_modules/,
-				use: [
-					{ loader: 'style-loader' },
-					{ loader: 'css-loader' }
-				]
-			}
 		]
 	},
 	resolve: {
