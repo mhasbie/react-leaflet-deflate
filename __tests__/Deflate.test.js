@@ -5,6 +5,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 import { MapContainer, TileLayer } from 'react-leaflet';
+import L from 'leaflet';
 import Deflate from '../src/index';
 
 const data = {
@@ -53,11 +54,15 @@ const data = {
 };
 
 describe('Deflate', () => {
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
   it('Should instantiate a Deflate layer when rendered inside a map', () => {
     render(
       <MapContainer center={[0, 0]} zoom={1} minZoom={1} maxZoom={22} style={{ height: 400, width: 600 }}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <Deflate data={data} cluster={true} minSize={10} />
+        <Deflate data={data} markerCluster={false} minSize={10} />
       </MapContainer>
     );
     // Since Deflate is a leaflet plugin, check that the map container is rendered
@@ -68,16 +73,17 @@ describe('Deflate', () => {
   });
 
   it('Should render with cluster disabled', () => {
-    render(
+    const { container } = render(
       <MapContainer center={[0, 0]} zoom={1} minZoom={1} maxZoom={22} style={{ height: 400, width: 600 }}>
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <Deflate data={data} cluster={false} minSize={10} />
+        <Deflate data={data} markerCluster={false} minSize={10} />
       </MapContainer>
     );
 
     const markers = screen.getAllByRole('button', { name: "Marker" });
     expect(markers.length).toBeGreaterThan(0);
     expect(markers[0]).toBeInTheDocument();
+    expect(container.querySelector('.leaflet-container')).not.toHaveClass('leaflet-cluster-anim');
   });
 
   it('Should render with different minSize', () => {
@@ -104,5 +110,70 @@ describe('Deflate', () => {
     expect(mapEl).toHaveClass('leaflet-cluster-anim');
     expect(mapEl).toHaveClass('marker-cluster-styled');
     expect(mapEl).toHaveClass('marker-cluster-animated');
+  });
+
+  it('forwards GeoJSON options and the minimum size to Leaflet', () => {
+    const style = jest.fn(() => ({ color: 'red' }));
+    const filter = jest.fn(() => true);
+    const onEachFeature = jest.fn();
+    const geoJSONSpy = jest.spyOn(L, 'geoJSON');
+    const initializeSpy = jest.spyOn(L.Deflate.prototype, 'initialize');
+
+    render(
+      <MapContainer center={[0, 0]} zoom={1} minZoom={1} maxZoom={22} style={{ height: 400, width: 600 }}>
+        <Deflate
+          data={data}
+          minSize={15}
+          style={style}
+          filter={filter}
+          onEachFeature={onEachFeature}
+        />
+      </MapContainer>
+    );
+
+    expect(geoJSONSpy).toHaveBeenCalledWith(data, expect.objectContaining({
+      style,
+      filter,
+      onEachFeature,
+    }));
+    expect(initializeSpy).toHaveBeenCalledWith(expect.objectContaining({
+      minSize: 15,
+    }));
+    expect(onEachFeature).toHaveBeenCalledTimes(data.features.length);
+  });
+
+  it('replaces its Leaflet layer when props change and removes it on unmount', () => {
+    const addLayerSpy = jest.spyOn(L.Map.prototype, 'addLayer');
+    const removeLayerSpy = jest.spyOn(L.Map.prototype, 'removeLayer');
+    const updatedData = {
+      ...data,
+      features: data.features.slice(0, 1),
+    };
+    const createMap = (geoJSON) => (
+      <MapContainer center={[0, 0]} zoom={1} minZoom={1} maxZoom={22} style={{ height: 400, width: 600 }}>
+        <Deflate data={geoJSON} minSize={10} />
+      </MapContainer>
+    );
+
+    const { rerender, unmount } = render(createMap(data));
+    const addedLayers = () => addLayerSpy.mock.calls
+      .map(([layer]) => layer)
+      .filter((layer) => layer instanceof L.Deflate);
+    const removedLayers = () => removeLayerSpy.mock.calls
+      .map(([layer]) => layer)
+      .filter((layer) => layer instanceof L.Deflate);
+    const firstLayer = addedLayers()[0];
+
+    expect(firstLayer).toBeDefined();
+
+    rerender(createMap(updatedData));
+
+    const activeLayer = addedLayers()[1];
+    expect(activeLayer).toBeDefined();
+    expect(removedLayers()).toContain(firstLayer);
+
+    unmount();
+
+    expect(removedLayers()).toContain(activeLayer);
   });
 });

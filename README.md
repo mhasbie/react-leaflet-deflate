@@ -84,6 +84,27 @@ Option          | Type      | Default | Description
   - [oliverroick](https://github.com/oliverroick) and the other [contributors](https://github.com/oliverroick/Leaflet.Deflate/graphs/contributors) to for the original work on `Leaflet.Deflate`.
   - [clintharris](https://github.com/clintharris) for updating `react-leaflet-deflate` to reference `Leaflet.Deflate` as an external dependency, support property changes, and work with `react-leaflet` v2.
 
+# Tests
+
+Run the Jest/React Testing Library unit suite with:
+
+```bash
+npm test
+```
+
+The Playwright tests run a local Leaflet fixture without external tiles or CDN dependencies. Install the Chromium browser once, then run:
+
+```bash
+npx playwright install chromium
+npm run test:e2e
+```
+
+To run both suites:
+
+```bash
+npm run test:all
+```
+
 # License
 
 MIT License
