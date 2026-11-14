@@ -16,6 +16,7 @@
 		"test:unit": "jest",
 		"test:e2e": "playwright test",
 		"test:e2e:build": "webpack --config webpack.e2e.config.js",
+		"debug:example": "node tests/e2e/server.js",
 		"test:all": "npm run test:unit && npm run test:e2e"
 	},
 	"repository": {

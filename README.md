@@ -86,6 +86,8 @@ Option          | Type      | Default | Description
 
 # Tests
 
+For instructions on the browser debug example, see [example/README.md](example/README.md).
+
 Run the Jest/React Testing Library unit suite with:
 
 ```bash
